@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ZXinL-CN/Make-wheel/issues"
   },
-  "homepage": "https://github.com/ZXinL-CN/Make-wheel#readme"
+  "homepage": "https://github.com/ZXinL-CN/Make-wheel#readme",
+  "dependencies": {
+    "lodash-es": "^4.17.21"
+  }
 }
