@@ -1,6 +1,6 @@
 import throttle from "../node_modules/lodash-es/throttle.js";
 
-export default function ScreenAutoAdaptation() {
+export default (function ScreenAutoAdaptation() {
     const _html = document.documentElement;
     const _body = document.body;
 
@@ -31,6 +31,6 @@ export default function ScreenAutoAdaptation() {
         }
         _last_window_width = window.innerWidth;
     }
-};
+})();
 
 
