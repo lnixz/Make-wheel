@@ -1,6 +1,6 @@
 import throttle from "../node_modules/lodash-es/throttle.js";
 
-export default (function ScreenAutoAdaptation() {
+export default function ScreenAutoAdaptation() {
     const _html = document.documentElement;
     const _body = document.body;
 
@@ -8,7 +8,6 @@ export default (function ScreenAutoAdaptation() {
     let _max_scale = 0;
 
     onScale();
-    const onResizeThrottle = throttle(onResize, 15);
     window.addEventListener("resize", throttle(onResize, 15));
 
     function onScale() {
@@ -17,6 +16,8 @@ export default (function ScreenAutoAdaptation() {
         const BODY_clientWidth = _body.clientWidth;
         // Calculate Scale.
         const scale = HTML_clientWidth / BODY_clientWidth;
+        const HTML_clientHeight = _html.clientHeight;
+        _body.style.height = HTML_clientHeight / scale + "px";
         if (_max_scale < scale) {
             _max_scale = scale;
             _body.style.transform = `scale(${scale})`;
@@ -30,6 +31,6 @@ export default (function ScreenAutoAdaptation() {
         }
         _last_window_width = window.innerWidth;
     }
-})();
+};
 
 
