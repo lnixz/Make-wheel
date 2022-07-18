@@ -1,4 +1,6 @@
-class Observer {
+import defineReactive from "./defineReactive";
+
+export default class Observer {
     constructor(value) {
         this.value = value;
         this.walk();
@@ -11,21 +13,3 @@ class Observer {
     }
 }
 
-function defineReactive(data, key, value = data[key]) {
-    observe(value)
-    Object.defineProperty(data, key, {
-        get: function reactiveGetter() {
-            return value;
-        },
-        set: function reactiveSetter(newValue) {
-            if (newValue === value) return
-            value = newValue
-            observe(value)
-        }
-    })
-}
-
-function observe(data) {
-    if (typeof data !== 'object') return
-    new Observer(data)
-}

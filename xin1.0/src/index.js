@@ -1,3 +1,7 @@
+import defineReactive from "./defineReactive";
+import Observer from "./Observer";
+
+
 export default function Xin(options) {
     this._init(options)
     this._reander(options)
@@ -24,7 +28,6 @@ function reactive(obj, key, value) {
         },
         set(newValue) {
             value = newValue
-            // console.log(value);
         }
     })
 }
@@ -61,3 +64,16 @@ obj.b = obj.a * 10
 console.log(obj.b);
 obj.a = 20
 console.log(obj.b);
+
+//  ----------------------------------------------------------------
+
+function observe(value) {
+    if (typeof value !== 'object') return
+    var ob;
+    if (typeof value.__ob__ !== 'undefined') {
+        ob = value.__ob__
+    } else {
+        ob = new Observer(data)
+    }
+    return ob;
+}
