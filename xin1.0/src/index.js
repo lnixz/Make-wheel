@@ -13,9 +13,10 @@ Xin.prototype._reander = function (options) {
     const id = options.el || null;
     const element = document.querySelector(id);
     const elementInnerHtml = element.innerHTML
-    element.outerHTML = `<div style="border:5px solid red">${elementInnerHtml}</div><textarea>${this.$options.el}</textarea>`;
+    element.outerHTML = `<div style="border:5px solid pink">${elementInnerHtml}</div><textarea>${this.$options.el}</textarea>`;
 }
 
+// ----------------------------------------------------------------
 function reactive(obj, key, value) {
     Object.defineProperty(obj, key, {
         get() {
@@ -28,22 +29,25 @@ function reactive(obj, key, value) {
     })
 }
 
+// ----------------------------------------------------------------
+
 function convert(obj) {
     Object.keys(obj).forEach(key => {
-        let value = obj[key]
+        let internalValue = obj[key]
         Object.defineProperty(obj, key, {
             get() {
-                console.log(`获取key ${key} : ${value}`);
-                return value
+                console.log(`获取key ${key} : ${internalValue}`);
+                return internalValue
             },
             set(newValue) {
                 console.log(`设置key ${key} : ${newValue}`);
-                value = newValue
+                internalValue = newValue
             }
         })
     })
 }
 
+// -----------------------------------------------------------------
 
 var obj = {
     a: 0,
