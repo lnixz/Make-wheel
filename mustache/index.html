@@ -9,23 +9,9 @@
 </head>
 
 <body>
-    <ul id="list">
-    </ul>
-    <script>
-        var arr = [
-            { "name": "小明", "age": 12, "sex": "男" },
-            { "name": "小红", "age": 11, "sex": "女" },
-            { "name": "小强", "age": 13, "sex": "男" },
-        ]
-
-        var list = document.querySelector("#list");
-
-        for (var i = 0; i < arr.length; i++) {
-            let oLi = document.createElement("li");
-            oLi.innerHTML = arr[i].name;
-
-            list.appendChild(oLi);
-        }
+    <script type="module">
+        import mustache from "./lib/mustache.js";
+        console.log(mustache);
     </script>
 </body>
 
